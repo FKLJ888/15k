@@ -14,6 +14,6 @@ abstract class FindContract {
         fun getData()
     }
     interface FindModle{
-        fun getData(observer: BaseListObserver<maple.story.xdy.mvp.presenter.FindPresenter,MutableList<FindBean>>)
+        fun getData(observer: BaseListObserver<maple.story.xdy.mvp.presenter.FindPresenter, MutableList<FindBean>>)
     }
 }

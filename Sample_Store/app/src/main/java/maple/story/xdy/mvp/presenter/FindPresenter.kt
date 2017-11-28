@@ -12,7 +12,7 @@ import maple.story.xdy.retrofit.observer.BaseListObserver
  */
 class FindPresenter : BasePresenter<FindFragment, FindModle>(),FindContract.FindPresenter{
     override fun getData() {
-        modle.getData(object : BaseListObserver<FindPresenter,MutableList<FindBean>>(this,view.activity){
+        modle.getData(object : BaseListObserver<FindPresenter, MutableList<FindBean>>(this,view.activity){
             override fun onSuccess(bean: MutableList<FindBean>) {
                 view.showData(bean)
             }
