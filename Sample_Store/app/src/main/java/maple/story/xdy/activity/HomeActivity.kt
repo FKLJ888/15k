@@ -29,9 +29,9 @@ class HomeActivity: BaseActivity<HomePresenter>(),View.OnClickListener{
     override fun initEvent() {
         //添加一个Fragment
         supportFragmentManager.beginTransaction().add(R.id.main_frameLayout, indexFragment)
-                .add(R.id.main_frameLayout, findFragment)
                 .add(R.id.main_frameLayout, hotFragment)
                 .add(R.id.main_frameLayout, mineFragment)
+                .add(R.id.main_frameLayout, findFragment)
                 .commit()
 
         showFragment(indexFragment,main_footer_index_iv,R.mipmap.home_selected)
@@ -41,6 +41,7 @@ class HomeActivity: BaseActivity<HomePresenter>(),View.OnClickListener{
         main_footer_index.setOnClickListener(this)
         main_footer_mine.setOnClickListener(this)
 
+        supportFragmentManager.beginTransaction().add(R.id.main_frameLayout, FindFragment()).commit()
     }
 
     override fun initContextView(): Int {
