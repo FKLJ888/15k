@@ -23,7 +23,7 @@ class FindAdapter(var context: Context, var list: MutableList<FindBean>) : BaseA
         if (p1 == null) {
             holder = ViewHolder()
             view = LayoutInflater.from(context).inflate(R.layout.for_fragment_find, p2, false)
-            holder.img = view.findViewById(R.id.find_img) as SimpleDraweeView?
+            holder.img = view.findViewById(R.id.find_img)
             view.tag = holder
         } else {
             view = p1

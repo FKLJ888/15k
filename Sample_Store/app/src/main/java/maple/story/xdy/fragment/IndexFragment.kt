@@ -1,11 +1,14 @@
 package maple.story.xdy.fragment
 
 import android.content.Context
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.tt.lvruheng.eyepetizer.mvp.model.bean.HomeBean
+import kotlinx.android.synthetic.main.fragment_index.*
 import maple.story.xdy.R
+import maple.story.xdy.adapter.HomeAdapter
 import maple.story.xdy.mvp.base.BaseFragment
 import maple.story.xdy.mvp.contract.IndexContract
 import maple.story.xdy.mvp.presenter.IndexPresenter
@@ -15,12 +18,32 @@ import maple.story.xdy.mvp.presenter.IndexPresenter
  */
 class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView{
     lateinit var tv: TextView
+    var mAdapter: HomeAdapter? = null
 
+    lateinit var list : ArrayList<HomeBean.IssueListBean.ItemListBean.DataBean>
     //V层的接口
     override fun dataSucc(bean: HomeBean) {
-        println("下一页的网址 : "+bean.nextPageUrl)
-        Log.i("xxx","下一页的网址 : "+bean.nextPageUrl)
+        list= ArrayList()
+        var issList=bean.issueList
 
+        for(i in 0..issList!!.size-1)
+        {
+            var itemlist=issList.get(i).itemList
+            for (j in 0..itemlist!!.size-1)
+            {
+                if (j==0){
+                    continue
+                }
+                list.add(itemlist.get(j).data!!)
+                recyclerView.layoutManager = LinearLayoutManager(context)
+                mAdapter= HomeAdapter(context,list)
+                recyclerView.adapter=mAdapter
+
+
+            }
+        }
+
+        Log.i("xxx","集合的数量 : "+list.size)
     }
 
     //初始化事件

@@ -3,6 +3,7 @@ package maple.story.xdy.activity
 import android.support.v4.app.Fragment
 import maple.story.xdy.R
 import maple.story.xdy.fragment.FindFragment
+import maple.story.xdy.fragment.IndexFragment
 import maple.story.xdy.mvp.base.BaseActivity
 import maple.story.xdy.mvp.presenter.HomePresenter
 import java.util.*
@@ -15,7 +16,7 @@ class HomeActivity: BaseActivity<HomePresenter>(){
 
     override fun initEvent() {
         //添加一个Fragment
-        supportFragmentManager.beginTransaction().add(R.id.main_frameLayout, FindFragment()).commit()
+        supportFragmentManager.beginTransaction().add(R.id.main_frameLayout, IndexFragment()).commit()
     }
 
     override fun initContextView(): Int {
