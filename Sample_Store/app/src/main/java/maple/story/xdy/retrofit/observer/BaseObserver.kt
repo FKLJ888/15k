@@ -16,7 +16,7 @@ import java.net.UnknownServiceException
 /**
  * Created by XP on 2017/11/27.
  */
-abstract class BaseObserver<P : IPresenter,B : BaseBean> (presenterObj:P,context: Context) :Observer<BaseBean> {
+abstract class BaseObserver<P : IPresenter,B : BaseBean> (presenterObj:P,context: Context) :Observer<B> {
     private val presenter:P=presenterObj
     private val context:Context=context
 
@@ -43,9 +43,8 @@ abstract class BaseObserver<P : IPresenter,B : BaseBean> (presenterObj:P,context
         onErrorable(e)
     }
 
-    override fun onNext(t: BaseBean) {
-        var bean:B= t as B
-        onSuccess(bean)
+    override fun onNext(t: B) {
+        onSuccess(t)
     }
 
     override fun onComplete() {
@@ -54,4 +53,5 @@ abstract class BaseObserver<P : IPresenter,B : BaseBean> (presenterObj:P,context
     override fun onSubscribe(d: Disposable) {
         presenter.addDisposable(d)
     }
+
 }

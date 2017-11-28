@@ -19,8 +19,10 @@ abstract class BaseFragment<P : IPresenter> : Fragment(),IView{
         {
             presenter.attachView(this)
         }
+        var view:View=View.inflate(activity,initContentView(),null)
+        initView(view)
         initData(activity)
-        return View.inflate(activity,initContentView(),null)
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -39,4 +41,5 @@ abstract class BaseFragment<P : IPresenter> : Fragment(),IView{
     abstract fun initEvent(context: Context)
     abstract fun initData(context: Context)
     abstract fun initContentView():Int
+    abstract fun initView(view: View)
 }

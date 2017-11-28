@@ -35,7 +35,7 @@ abstract class BaseActivity<P : IPresenter> : AppCompatActivity(), IView {
         }
 
         initData()
-        initListener()
+        initEvent()
     }
 
     //初始化View
@@ -45,7 +45,7 @@ abstract class BaseActivity<P : IPresenter> : AppCompatActivity(), IView {
     abstract fun initData()
 
     //创建事件
-    abstract fun initListener()
+    abstract fun initEvent()
 
     override fun onDestroy() {
         super.onDestroy()
