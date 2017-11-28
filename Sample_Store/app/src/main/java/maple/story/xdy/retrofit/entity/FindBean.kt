@@ -1,5 +1,7 @@
 package com.tt.lvruheng.eyepetizer.mvp.model.bean
 
+import maple.story.xdy.retrofit.base.BaseBean
+
 /**
  * Created by lvruheng on 2017/7/6.
  */
@@ -7,7 +9,7 @@ package com.tt.lvruheng.eyepetizer.mvp.model.bean
 
 data class FindBean(var id: Int, var name: String?, var alias: Any?,
                     var description: String?, var bgPicture: String?,
-                    var bgColor: String?, var headerImage: String?) {
+                    var bgColor: String?, var headerImage: String?) : BaseBean() {
     /**
      * id : 36
      * name : 生活

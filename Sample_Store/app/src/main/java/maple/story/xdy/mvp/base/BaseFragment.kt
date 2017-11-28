@@ -1,5 +1,6 @@
 package maple.story.xdy.mvp.base
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -18,7 +19,13 @@ abstract class BaseFragment<P : IPresenter> : Fragment(),IView{
         {
             presenter.attachView(this)
         }
-        return super.onCreateView(inflater, container, savedInstanceState)
+        initData(activity)
+        return View.inflate(activity,initContentView(),null)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        initEvent(activity)
     }
 
     override fun onDestroy() {
@@ -28,4 +35,8 @@ abstract class BaseFragment<P : IPresenter> : Fragment(),IView{
             presenter.detachView()
         }
     }
+
+    abstract fun initEvent(context: Context)
+    abstract fun initData(context: Context)
+    abstract fun initContentView():Int
 }

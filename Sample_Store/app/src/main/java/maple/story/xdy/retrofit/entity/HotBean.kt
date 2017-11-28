@@ -1,10 +1,12 @@
 package com.tt.lvruheng.eyepetizer.mvp.model.bean
 
+import maple.story.xdy.retrofit.base.BaseBean
+
 /**
  * Created by lvruheng on 2017/7/7.
  */
 
-data class HotBean(var count: Int, var total: Int, var nextPageUrl: Any?, var itemList: List<ItemListBean>?) {
+data class HotBean(var count: Int, var total: Int, var nextPageUrl: Any?, var itemList: List<ItemListBean>?) :BaseBean() {
 
     data class ItemListBean (var type: String?,var data: DataBean?,var tag: Any?){
 

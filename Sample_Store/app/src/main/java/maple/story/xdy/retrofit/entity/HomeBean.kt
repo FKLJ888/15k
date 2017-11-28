@@ -1,12 +1,14 @@
 package com.tt.lvruheng.eyepetizer.mvp.model.bean
 
+import maple.story.xdy.retrofit.base.BaseBean
+
 /**
  * Created by lvruheng on 2017/7/5.
  */
 
 data class HomeBean(var nextPageUrl: String?,var nextPublishTime: Long,
                     var newestIssueType: String?,var dialog: Any?,
-                    var issueList: List<IssueListBean>?) {
+                    var issueList: List<IssueListBean>?) :BaseBean(){
 
     data class IssueListBean(var releaseTime: Long,var type: String?,
                              var date: Long,var publishTime: Long,var count: Int,
