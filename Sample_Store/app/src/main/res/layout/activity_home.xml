@@ -8,7 +8,6 @@
         android:id="@+id/main_footer"
         android:layout_width="@dimen/x800"
         android:layout_height="@dimen/y105"
-        android:background="#ccc"
         android:layout_alignParentBottom="true">
         <RelativeLayout
             android:layout_weight="1"

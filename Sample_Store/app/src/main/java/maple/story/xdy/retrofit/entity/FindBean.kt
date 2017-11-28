@@ -2,9 +2,6 @@ package com.tt.lvruheng.eyepetizer.mvp.model.bean
 
 import maple.story.xdy.retrofit.base.BaseBean
 
-/**
- * Created by lvruheng on 2017/7/6.
- */
 
 
 data class FindBean(var id: Int, var name: String?, var alias: Any?,
