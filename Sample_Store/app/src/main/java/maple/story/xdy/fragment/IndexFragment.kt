@@ -20,6 +20,7 @@ class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView{
     override fun dataSucc(bean: HomeBean) {
         println("下一页的网址 : "+bean.nextPageUrl)
         Log.i("xxx","下一页的网址 : "+bean.nextPageUrl)
+
     }
 
     //初始化事件
@@ -41,6 +42,6 @@ class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView{
     //findById用的
     override fun initView(view: View) {
         Log.i("xxx","IndexFragment的获取控件的方法")
-        tv= view.findViewById(R.id.fragment_home_tv) as TextView
+        tv= view.findViewById(R.id.fragment_home_tv)
     }
 }

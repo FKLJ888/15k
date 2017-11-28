@@ -7,12 +7,13 @@ import maple.story.xdy.R.id.main_frameLayout
 import maple.story.xdy.fragment.IndexFragment
 import maple.story.xdy.mvp.base.BaseActivity
 import maple.story.xdy.mvp.presenter.HomePresenter
+import java.util.*
 
 /**
  * Created by XP on 2017/11/27.
  */
 class HomeActivity: BaseActivity<HomePresenter>(){
-    var fragments=ArrayList<Fragment>()
+    var fragments= ArrayList<Fragment>()
 
     override fun initEvent() {
         //添加一个Fragment
