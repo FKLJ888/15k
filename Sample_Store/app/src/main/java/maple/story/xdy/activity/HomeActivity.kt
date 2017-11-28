@@ -16,7 +16,7 @@ class HomeActivity: BaseActivity<HomePresenter>(){
 
     override fun initEvent() {
         //添加一个Fragment
-        supportFragmentManager.beginTransaction().add(R.id.main_frameLayout,IndexFragment()).commit()
+        supportFragmentManager.beginTransaction().add(R.id.main_frameLayout, IndexFragment()).commit()
     }
 
     override fun initContextView(): Int {
