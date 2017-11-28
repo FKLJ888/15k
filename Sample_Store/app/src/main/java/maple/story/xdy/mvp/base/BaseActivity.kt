@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import maple.story.xdy.utils.CreateObjUtil
 import android.support.v4.content.ContextCompat
+import android.view.ViewGroup
+import android.view.Window
 import android.view.WindowManager
 import maple.story.xdy.R
 import org.zackratos.ultimatebar.UltimateBar
@@ -19,14 +21,16 @@ abstract class BaseActivity<P : IPresenter> : AppCompatActivity(), IView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        }
-
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(initContextView())
 
-        val ultimateBar = UltimateBar(this)
-        ultimateBar.setColorBar(ContextCompat.getColor(this,R.color.abc_primary_text_material_dark))
+        val conentFrameLayout = findViewById(Window.ID_ANDROID_CONTENT) as ViewGroup
+
+        val parentView = conentFrameLayout.getChildAt(0)
+        if (parentView != null && Build.VERSION.SDK_INT >= 14) {
+            parentView.fitsSystemWindows = true
+        }
+
         //通过泛型获取P层对象,或者创建对象
         presenter = CreateObjUtil.getT(this, 0)!!
         if (presenter != null) {

@@ -2,9 +2,6 @@ package com.tt.lvruheng.eyepetizer.mvp.model.bean
 
 import maple.story.xdy.retrofit.base.BaseBean
 
-/**
- * Created by lvruheng on 2017/7/5.
- */
 
 data class HomeBean(var nextPageUrl: String?,var nextPublishTime: Long,
                     var newestIssueType: String?,var dialog: Any?,

@@ -2,6 +2,7 @@ package maple.story.xdy.fragment
 
 import android.content.Context
 import android.view.View
+import maple.story.xdy.R
 import maple.story.xdy.mvp.base.BaseFragment
 import maple.story.xdy.mvp.presenter.MinePresenter
 
@@ -16,7 +17,7 @@ class MineFragment :BaseFragment<MinePresenter>() {
     }
 
     override fun initContentView(): Int {
-        return 0
+        return R.layout.fragment_index
     }
 
     override fun initView(view: View) {

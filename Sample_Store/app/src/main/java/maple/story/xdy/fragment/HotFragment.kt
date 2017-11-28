@@ -2,6 +2,8 @@ package maple.story.xdy.fragment
 
 import android.content.Context
 import android.view.View
+import kotlinx.android.synthetic.main.fragment_index.view.*
+import maple.story.xdy.R
 import maple.story.xdy.mvp.base.BaseFragment
 import maple.story.xdy.mvp.presenter.HotPresenter
 
@@ -16,7 +18,7 @@ class HotFragment : BaseFragment<HotPresenter>() {
     }
 
     override fun initContentView(): Int {
-        return 0
+        return R.layout.fragment_index
     }
 
     override fun initView(view: View) {
