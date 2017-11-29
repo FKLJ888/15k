@@ -52,6 +52,7 @@ dependencies {
     compile 'org.zackratos:ultimatebar:1.0.3'
     //recyclerview
     compile 'com.android.support:recyclerview-v7:25.0.2'
+    compile 'com.gyf.barlibrary:barlibrary:2.2.9'
 }
 repositories {
     mavenCentral()

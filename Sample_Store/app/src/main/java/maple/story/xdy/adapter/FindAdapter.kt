@@ -31,7 +31,6 @@ class FindAdapter(var context: Context, var list: MutableList<FindBean>) : BaseA
             view = p1
             holder = view.tag as ViewHolder
         }
-        Log.e("bbb",list[p0].bgPicture)
         holder.img?.setImageURI(Uri.parse(list[p0].bgPicture))
         holder.name?.text = list[p0].name
         return view
