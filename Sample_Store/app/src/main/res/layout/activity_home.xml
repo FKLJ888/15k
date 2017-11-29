@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xp="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <maple.story.xdy.view.TopBar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:id="@+id/main_topbar"
+        android:layout_alignParentTop="true"
+        xp:rightImageSrc="@drawable/icon_search"
+        xp:titleSize="12sp"
+        xp:titleColor="@color/burlywood"
+        xp:title="Monday"
+        xp:TopBarWidth="@dimen/x800"
+        >
+    </maple.story.xdy.view.TopBar>
     <LinearLayout
         android:orientation="horizontal"
         android:weightSum="4"
         android:id="@+id/main_footer"
         android:layout_width="@dimen/x800"
-        android:layout_height="@dimen/y105"
+        android:layout_height="@dimen/y85"
         android:layout_alignParentBottom="true">
         <RelativeLayout
             android:layout_weight="1"
@@ -15,10 +29,10 @@
             android:layout_height="match_parent"
             android:id="@+id/main_footer_index">
             <ImageView
-                android:layout_marginTop="@dimen/y9"
-                android:layout_marginBottom="@dimen/y8"
+                android:layout_marginTop="@dimen/y6"
+                android:layout_marginBottom="@dimen/y1"
                 android:layout_width="@dimen/x100"
-                android:layout_height="@dimen/y50"
+                android:layout_height="@dimen/y40"
                 android:src="@mipmap/home_normal"
                 android:id="@+id/main_footer_index_iv"
                 android:layout_centerHorizontal="true"
@@ -39,10 +53,10 @@
             android:layout_height="match_parent"
             android:id="@+id/main_footer_find">
             <ImageView
-                android:layout_marginTop="@dimen/y9"
-                android:layout_marginBottom="@dimen/y8"
+                android:layout_marginTop="@dimen/y6"
+                android:layout_marginBottom="@dimen/y1"
                 android:layout_width="@dimen/x100"
-                android:layout_height="@dimen/y50"
+                android:layout_height="@dimen/y40"
                 android:src="@mipmap/find_normal"
                 android:id="@+id/main_footer_find_iv"
                 android:layout_centerHorizontal="true"
@@ -63,10 +77,10 @@
             android:layout_height="match_parent"
             android:id="@+id/main_footer_hot">
             <ImageView
-                android:layout_marginTop="@dimen/y9"
-                android:layout_marginBottom="@dimen/y8"
+                android:layout_marginTop="@dimen/y6"
+                android:layout_marginBottom="@dimen/y1"
                 android:layout_width="@dimen/x100"
-                android:layout_height="@dimen/y50"
+                android:layout_height="@dimen/y40"
                 android:src="@mipmap/hot_normal"
                 android:id="@+id/main_footer_hot_iv"
                 android:layout_centerHorizontal="true"
@@ -87,10 +101,10 @@
             android:layout_height="match_parent"
             android:id="@+id/main_footer_mine">
             <ImageView
-                android:layout_marginTop="@dimen/y9"
-                android:layout_marginBottom="@dimen/y8"
+                android:layout_marginTop="@dimen/y6"
+                android:layout_marginBottom="@dimen/y1"
                 android:layout_width="@dimen/x100"
-                android:layout_height="@dimen/y50"
+                android:layout_height="@dimen/y40"
                 android:src="@mipmap/mine_normal"
                 android:id="@+id/main_footer_mine_iv"
                 android:layout_centerHorizontal="true"
@@ -113,10 +127,11 @@
         android:layout_above="@+id/main_footer"
         android:background="#999"/>
     <FrameLayout
+        android:id="@+id/main_frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/main_line1"
-        android:id="@+id/main_frameLayout"
-        >
-    </FrameLayout>
+        android:layout_below="@+id/main_topbar"
+        android:background="@color/beige"
+        />
 </RelativeLayout>

@@ -1,10 +1,9 @@
 package maple.story.xdy.activity
 
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentTransaction
 import android.view.View
 import android.widget.ImageView
-import android.widget.RadioButton
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_home.*
 import maple.story.xdy.R
 import maple.story.xdy.fragment.FindFragment
@@ -13,18 +12,16 @@ import maple.story.xdy.fragment.IndexFragment
 import maple.story.xdy.fragment.MineFragment
 import maple.story.xdy.mvp.base.BaseActivity
 import maple.story.xdy.mvp.presenter.HomePresenter
+import maple.story.xdy.view.TopBar
 
 /**
  * Created by XP on 2017/11/27.
  */
-class HomeActivity: BaseActivity<HomePresenter>(),View.OnClickListener{
-
-    private lateinit var fragments:ArrayList<Fragment>
+class HomeActivity: BaseActivity<HomePresenter>(),View.OnClickListener, TopBar.TopBarClickListener {
     private lateinit var indexFragment:IndexFragment
     private lateinit var findFragment:FindFragment
     private lateinit var hotFragment:HotFragment
     private lateinit var mineFragment:MineFragment
-
 
     override fun initEvent() {
         //添加一个Fragment
@@ -41,7 +38,9 @@ class HomeActivity: BaseActivity<HomePresenter>(),View.OnClickListener{
         main_footer_index.setOnClickListener(this)
         main_footer_mine.setOnClickListener(this)
 
-        supportFragmentManager.beginTransaction().add(R.id.main_frameLayout, FindFragment()).commit()
+        main_topbar.setTitle("Monday")
+        main_topbar.setRightImage(R.mipmap.icon_search)
+        main_topbar.setOnTopBarClickListener(this)
     }
 
     override fun initContextView(): Int {
@@ -49,13 +48,10 @@ class HomeActivity: BaseActivity<HomePresenter>(),View.OnClickListener{
     }
 
     override fun initData() {
-        fragments= ArrayList()
         indexFragment= IndexFragment()
         findFragment= FindFragment()
         hotFragment= HotFragment()
         mineFragment= MineFragment()
-
-
     }
 
     private fun showFragment(showFragment: Fragment,iv:ImageView,resId:Int)
@@ -78,14 +74,48 @@ class HomeActivity: BaseActivity<HomePresenter>(),View.OnClickListener{
         var id:Int=v!!.id
         when(id)
         {
-            R.id.main_footer_index ->
+            R.id.main_footer_index -> {
                 showFragment(indexFragment,main_footer_index_iv,R.mipmap.home_selected)
+                main_topbar.setTitle("Monday")
+                main_topbar.setRightImage(R.mipmap.icon_search)
+                main_topbar.setOnTopBarClickListener(this)
+            }
             R.id.main_footer_find ->
-                    showFragment(findFragment,main_footer_find_iv,R.mipmap.find_selected)
+            {
+                showFragment(findFragment,main_footer_find_iv,R.mipmap.find_selected)
+                main_topbar.setTitle("Find")
+                main_topbar.setRightImage(R.mipmap.icon_search)
+                main_topbar.setOnTopBarClickListener(this)
+            }
             R.id.main_footer_hot ->
-                    showFragment(hotFragment,main_footer_hot_iv,R.mipmap.hot_selected)
+            {
+                showFragment(hotFragment,main_footer_hot_iv,R.mipmap.hot_selected)
+                main_topbar.setTitle("hot")
+                main_topbar.setRightImage(R.mipmap.icon_search)
+                main_topbar.setOnTopBarClickListener(this)
+            }
             R.id.main_footer_mine ->
-                    showFragment(mineFragment,main_footer_mine_iv,R.mipmap.mine_selected)
+            {
+                showFragment(mineFragment,main_footer_mine_iv,R.mipmap.mine_selected)
+                main_topbar.setTitle("mine")
+                main_topbar.setRightImage(R.mipmap.icon_setting)
+                main_topbar.setOnTopBarClickListener(object : TopBar.TopBarClickListener{
+                    override fun rightClick(imageView: ImageView) {
+                        Toast.makeText(context,"跳到设置页面",Toast.LENGTH_SHORT).show()
+                        /**
+                         * 设置页面
+                         */
+                    }
+                })
+            }
         }
     }
+
+    override fun rightClick(imageView: ImageView) {
+        Toast.makeText(context,"跳到搜索页面",Toast.LENGTH_SHORT).show()
+        /**
+         * 搜索页面
+         */
+    }
+
 }

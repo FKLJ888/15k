@@ -15,7 +15,6 @@ import maple.story.xdy.mvp.presenter.FindPresenter
  * Created by XP on 2017/11/27.
  */
 class FindFragment : BaseFragment<FindPresenter>(), FindContract.FindView
-
 {
     var findAdapter: FindAdapter? = null
 
@@ -35,7 +34,6 @@ class FindFragment : BaseFragment<FindPresenter>(), FindContract.FindView
     }
 
     override fun initContentView(): Int {
-        return R.layout.fragment_index
         return R.layout.fragment_find
     }
 

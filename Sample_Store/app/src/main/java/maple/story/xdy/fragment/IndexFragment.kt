@@ -18,7 +18,6 @@ class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView{
 
     //V层的接口
     override fun dataSucc(bean: HomeBean) {
-        println("下一页的网址 : "+bean.nextPageUrl)
         Log.i("xxx","下一页的网址 : "+bean.nextPageUrl)
     }
 

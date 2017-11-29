@@ -10,4 +10,11 @@
 
     <style name="TranslucentTheme" parent="AppTheme">
     </style>
+    <declare-styleable name="TopBar">
+        <attr name="title" format="string"></attr>
+        <attr name="titleSize" format="dimension"></attr>
+        <attr name="titleColor" format="color"></attr>
+        <attr name="rightImageSrc" format="reference|color"></attr>
+        <attr name="TopBarWidth" format="dimension"></attr>
+    </declare-styleable>
 </resources>
