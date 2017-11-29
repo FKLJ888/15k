@@ -19,7 +19,6 @@ class FindFragment : BaseFragment<FindPresenter>(), FindContract.FindView
     var findAdapter: FindAdapter? = null
 
     override fun showData(findBean: MutableList<FindBean>) {
-        Log.e("aaa", findBean.toString())
         findAdapter = FindAdapter(activity, findBean)
         find_gridView.adapter = findAdapter
 

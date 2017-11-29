@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
+import com.gyf.barlibrary.ImmersionBar
 import maple.story.xdy.R
 import org.zackratos.ultimatebar.UltimateBar
 
@@ -22,6 +23,10 @@ abstract class BaseActivity<P : IPresenter> : AppCompatActivity(), IView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        ImmersionBar.with(this)
+                .barColor(R.color.beige)
+                .init()
 
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(initContextView())
@@ -61,5 +66,6 @@ abstract class BaseActivity<P : IPresenter> : AppCompatActivity(), IView {
         {
             presenter.detachView()
         }
+        ImmersionBar.with(this).destroy()
     }
 }
