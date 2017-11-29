@@ -3,9 +3,9 @@ package maple.story.xdy.fragment
 import android.content.Context
 import android.util.Log
 import android.view.View
-import maple.story.xdy.R
 import com.tt.lvruheng.eyepetizer.mvp.model.bean.FindBean
 import kotlinx.android.synthetic.main.fragment_find.*
+import maple.story.xdy.R
 import maple.story.xdy.adapter.FindAdapter
 import maple.story.xdy.mvp.base.BaseFragment
 import maple.story.xdy.mvp.contract.FindContract

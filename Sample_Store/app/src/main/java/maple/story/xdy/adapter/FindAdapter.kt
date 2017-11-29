@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.TextView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.tt.lvruheng.eyepetizer.mvp.model.bean.FindBean
 import maple.story.xdy.R
@@ -23,7 +24,8 @@ class FindAdapter(var context: Context, var list: MutableList<FindBean>) : BaseA
         if (p1 == null) {
             holder = ViewHolder()
             view = LayoutInflater.from(context).inflate(R.layout.for_fragment_find, p2, false)
-            holder.img = view.findViewById(R.id.find_img) as SimpleDraweeView?
+            holder.img = view.findViewById(R.id.find_img)
+            holder.name = view.findViewById(R.id.find_name)
             view.tag = holder
         } else {
             view = p1
@@ -31,6 +33,7 @@ class FindAdapter(var context: Context, var list: MutableList<FindBean>) : BaseA
         }
         Log.e("bbb",list[p0].bgPicture)
         holder.img?.setImageURI(Uri.parse(list[p0].bgPicture))
+        holder.name?.text = list[p0].name
         return view
     }
 
@@ -48,6 +51,7 @@ class FindAdapter(var context: Context, var list: MutableList<FindBean>) : BaseA
 
     class ViewHolder {
         var img: SimpleDraweeView? = null
+        var name: TextView? = null
     }
 
 }

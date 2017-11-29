@@ -7,12 +7,13 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_home.*
 import maple.story.xdy.R
 import maple.story.xdy.fragment.FindFragment
-import maple.story.xdy.fragment.HotFragment
 import maple.story.xdy.fragment.IndexFragment
+import maple.story.xdy.fragment.HotFragment
 import maple.story.xdy.fragment.MineFragment
 import maple.story.xdy.mvp.base.BaseActivity
 import maple.story.xdy.mvp.presenter.HomePresenter
 import maple.story.xdy.view.TopBar
+import java.util.*
 
 /**
  * Created by XP on 2017/11/27.

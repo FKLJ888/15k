@@ -1,6 +1,7 @@
 package maple.story.xdy.mvp.contract
 
 import com.tt.lvruheng.eyepetizer.mvp.model.bean.FindBean
+import maple.story.xdy.mvp.presenter.FindPresenter
 import maple.story.xdy.retrofit.observer.BaseListObserver
 
 /**
@@ -14,6 +15,6 @@ abstract class FindContract {
         fun getData()
     }
     interface FindModle{
-        fun getData(observer: BaseListObserver<maple.story.xdy.mvp.presenter.FindPresenter,MutableList<FindBean>>)
+        fun getData(observer: BaseListObserver<maple.story.xdy.mvp.presenter.FindPresenter, MutableList<FindBean>>)
     }
 }
