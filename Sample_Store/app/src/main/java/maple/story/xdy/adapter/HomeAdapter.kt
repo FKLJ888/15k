@@ -1,13 +1,10 @@
 package maple.story.xdy.adapter
 
 import android.content.Context
-import android.graphics.Typeface
-import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.tt.lvruheng.eyepetizer.mvp.model.bean.HomeBean
@@ -16,10 +13,14 @@ import maple.story.xdy.R
 /**
  * Created by Love_you on 2017/11/28 0028.
  */
-class HomeAdapter(context: Context, list: MutableList<HomeBean.IssueListBean.ItemListBean.DataBean>?) : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
+class HomeAdapter(context: Context, list: MutableList<HomeBean.IssueListBean.ItemListBean.DataBean>?) : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>(),View.OnClickListener {
+
+
     var context : Context? = context
     var list : MutableList<HomeBean.IssueListBean.ItemListBean.DataBean>? = list
     var inflater : LayoutInflater? = LayoutInflater.from(context)
+
+    var mOnItemClickListener: OnItemClickListener? = null
 
     //绑定数据
     override fun onBindViewHolder(holder: HomeViewHolder?, position: Int) {
@@ -31,8 +32,19 @@ class HomeAdapter(context: Context, list: MutableList<HomeBean.IssueListBean.Ite
     }
 
     //加载布局
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): HomeViewHolder {
-        return HomeViewHolder(inflater?.inflate(R.layout.item_home,parent,false), context!!)
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): HomeViewHolder? {
+//        HomeViewHolder(inflater?.inflate(R.layout.item_home,parent,false), context!!)
+        var view = LayoutInflater.from(parent!!.getContext()).inflate(R.layout.item_home, null)
+        val holder = HomeViewHolder(view)
+        view.setOnClickListener(this)
+        return holder
+    }
+
+    override fun onClick(v: View?) {
+        if(mOnItemClickListener!=null){
+            //注意这里使用getTag方法获取position
+            mOnItemClickListener!!.onItemClick(v!!, v.getTag() as Int)
+        }
     }
 
     //item的个数
@@ -41,7 +53,7 @@ class HomeAdapter(context: Context, list: MutableList<HomeBean.IssueListBean.Ite
     }
 
     //viewHolder复用控件
-    class HomeViewHolder(itemView: View?, context: Context) : RecyclerView.ViewHolder(itemView) {
+    class HomeViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
         var tv_detail : TextView?= null
         var tv_title : TextView? = null
         var iv_photo : SimpleDraweeView? = null
@@ -52,5 +64,12 @@ class HomeAdapter(context: Context, list: MutableList<HomeBean.IssueListBean.Ite
             iv_photo = itemView?.findViewById(R.id.iv_photo)
             iv_user =  itemView?.findViewById(R.id.iv_user)
         }
+    }
+    interface OnItemClickListener{
+        fun onItemClick(view:View,position: Int)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.mOnItemClickListener = listener
     }
 }

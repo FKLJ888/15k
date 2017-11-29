@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import com.tt.lvruheng.eyepetizer.mvp.model.bean.HomeBean
 import kotlinx.android.synthetic.main.fragment_index.*
 import maple.story.xdy.R
@@ -38,8 +39,11 @@ class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView{
                 recyclerView.layoutManager = LinearLayoutManager(context)
                 mAdapter= HomeAdapter(context,list)
                 recyclerView.adapter=mAdapter
-
-
+                mAdapter!!.setOnItemClickListener(object : HomeAdapter.OnItemClickListener{
+                    override fun onItemClick(view: View, position: Int) {
+                        Toast.makeText(context,"点击的是"+position+"个Item项",Toast.LENGTH_SHORT).show()
+                    }
+                })
             }
         }
 
