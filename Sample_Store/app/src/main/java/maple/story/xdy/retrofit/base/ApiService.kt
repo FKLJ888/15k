@@ -4,6 +4,7 @@ import com.tt.lvruheng.eyepetizer.mvp.model.bean.FindBean
 import com.tt.lvruheng.eyepetizer.mvp.model.bean.HomeBean
 import com.tt.lvruheng.eyepetizer.mvp.model.bean.HotBean
 import io.reactivex.Observable
+import maple.story.xdy.retrofit.entity.FindItemBean
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -32,8 +33,7 @@ interface ApiService {
 
     //获取发现频道详情信息
     @GET("v3/videos")
-    fun getFindDetailData(@Query("categoryName") categoryName :String,@Query("strategy") strategy :String,
-                          @Query("udid") udid :String,@Query("vc") vc :Int) : Observable<HotBean>
+    fun getFindDetailData(@Query("categoryName") categoryName :String) : Observable<FindItemBean>
 
     //获取发现详情加载更多消息
     @GET("v3/videos")
