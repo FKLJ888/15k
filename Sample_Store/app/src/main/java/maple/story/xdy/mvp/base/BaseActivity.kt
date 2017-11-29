@@ -1,5 +1,6 @@
 package maple.story.xdy.mvp.base
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -17,12 +18,15 @@ import org.zackratos.ultimatebar.UltimateBar
  */
 abstract class BaseActivity<P : IPresenter> : AppCompatActivity(), IView {
     protected lateinit var presenter:P
+    protected lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(initContextView())
+
+        context=applicationContext
 
         val conentFrameLayout = findViewById(Window.ID_ANDROID_CONTENT) as ViewGroup
 

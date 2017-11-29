@@ -26,32 +26,34 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    //底部导航栏
+    //Fresco
+    // 支持 GIF 动图，需要添加
+    // 支持 WebP （静态图+动图），需要添加
+    // 仅支持 WebP 静态图，需要添加
+    //黑夜间切换按钮的依赖
+    //沉浸式状态栏
+    //recyclerview
+    //recycleview刷新加载
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile 'io.reactivex.rxjava2:rxjava:2.1.6'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     compile 'com.google.code.gson:gson:2.8.2'
-    //底部导航栏
     compile 'com.ashokvarma.android:bottom-navigation-bar:2.0.2'
-    //Fresco
     compile 'com.facebook.fresco:fresco:1.5.0'
-    // 支持 GIF 动图，需要添加
     compile 'com.facebook.fresco:animated-gif:1.5.0'
-    // 支持 WebP （静态图+动图），需要添加
     compile 'com.facebook.fresco:animated-webp:0.12.0'
-    // 仅支持 WebP 静态图，需要添加
     compile 'com.facebook.fresco:webpsupport:0.12.0'
-    //黑夜间切换按钮的依赖
     compile 'ch.ielse:switchbutton:1.0.0'
-    //沉浸式状态栏
     compile 'org.zackratos:ultimatebar:1.0.3'
-    //recyclerview
     compile 'com.android.support:recyclerview-v7:25.0.2'
+    compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.0.4'
+    testCompile 'junit:junit:4.12'
 }
 repositories {
     mavenCentral()
