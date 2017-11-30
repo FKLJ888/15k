@@ -94,12 +94,12 @@ class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView, Pul
     //加载的方法
     override fun onLoadMore() {
         stop()
-        Toast.makeText(context,"加载成功",1).show()
+        Toast.makeText(context,"加载成功",Toast.LENGTH_SHORT).show()
     }
 
     //刷新的方法
     override fun onRefresh() {
         stop()
-        Toast.makeText(context,"刷新成功",1).show()
+        Toast.makeText(context,"刷新成功",Toast.LENGTH_SHORT).show()
     }
 }
