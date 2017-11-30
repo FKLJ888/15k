@@ -138,24 +138,14 @@ class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView, Pul
 
     //加载的方法
     override fun onLoadMore() {
-<<<<<<< HEAD
         //加载数据
         presenter.requestData2(date)
-=======
-        stop()
-        Toast.makeText(context,"加载成功",Toast.LENGTH_SHORT).show()
->>>>>>> e629b4ed157b713bf03e719edcfbb9330830f1ff
     }
 
     //刷新的方法
     override fun onRefresh() {
-<<<<<<< HEAD
         var list : ArrayList<HomeBean.IssueListBean.ItemListBean.DataBean>
         presenter.requestData()
         Toast.makeText(context,"刷新成功",1).show()
-=======
-        stop()
-        Toast.makeText(context,"刷新成功",Toast.LENGTH_SHORT).show()
->>>>>>> e629b4ed157b713bf03e719edcfbb9330830f1ff
     }
 }
