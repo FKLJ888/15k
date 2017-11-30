@@ -65,6 +65,7 @@ abstract class BaseActivity<P : IPresenter> : AppCompatActivity(), IView {
         if (presenter!=null)
         {
             presenter.detachView()
+
         }
         ImmersionBar.with(this).destroy()
     }

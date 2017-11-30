@@ -27,15 +27,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    //底部导航栏
-    //Fresco
-    // 支持 GIF 动图，需要添加
-    // 支持 WebP （静态图+动图），需要添加
-    // 仅支持 WebP 静态图，需要添加
-    //黑夜间切换按钮的依赖
-    //沉浸式状态栏
-    //recyclerview
-    //recycleview刷新加载
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'io.reactivex.rxjava2:rxjava:2.1.6'
@@ -59,7 +50,6 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.1'
     compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.0.4'
     testCompile 'junit:junit:4.12'
-    compile 'com.gyf.barlibrary:barlibrary:2.2.9'
 }
 repositories {
     mavenCentral()

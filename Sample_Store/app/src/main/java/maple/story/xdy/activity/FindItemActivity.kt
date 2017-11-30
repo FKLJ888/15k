@@ -30,8 +30,6 @@ class FindItemActivity : BaseActivity<FindItemPresenter>() ,FindItemContract.Fin
         var categoryName = intent.extras.get("categoryName")
         find_tv.text = categoryName as String?
         presenter.getData(categoryName as String)
-
-
     }
 
 

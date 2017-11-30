@@ -1,21 +1,23 @@
 package maple.story.xdy.activity
+import android.view.View
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_video.*
 
 import maple.story.xdy.R
 import maple.story.xdy.mvp.base.BaseActivity
+import maple.story.xdy.mvp.contract.VideoContract
 import maple.story.xdy.mvp.presenter.VideoPresenter
+import java.net.HttpURLConnection
+import java.net.URL
 
-class VideoActivity : BaseActivity<VideoPresenter>() {
+class VideoActivity : BaseActivity<VideoPresenter>(),VideoContract.VideoView {
     override fun initContextView(): Int {
         return R.layout.activity_video
     }
-
     override fun initData() {
     }
-
     override fun initEvent() {
-        var playUrl = intent.getStringExtra("playUrl")//视频播放
+        var playUrl:String = intent.getStringExtra("playUrl")//视频播放
         var blurred = intent.getStringExtra("blurred")//模糊图
         var detail = intent.getStringExtra("detail")//视频图
         var description = intent.getStringExtra("description")//视频描述
@@ -34,6 +36,18 @@ class VideoActivity : BaseActivity<VideoPresenter>() {
         tv_video_favor.setText(collectionCount)
         tv_video_share.setText(replyCount)
         tv_video_reply.setText(shareCount)
+
+        //下载点击事件
+        iv_video_download.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v: View?) {
+                //调用P层去请求数据
+                var url=URL(playUrl)
+                presenter.requestModle(url,title)
+            }
+        })
+    }
+
+    override fun showProgress(progress: Int) {
     }
 
 }
