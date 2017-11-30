@@ -1,6 +1,7 @@
 package maple.story.xdy.app
 
 import android.app.Application
+import android.os.Handler
 import com.facebook.drawee.backends.pipeline.Fresco
 
 /**
@@ -11,6 +12,10 @@ import com.facebook.drawee.backends.pipeline.Fresco
 class FrescoApp :Application() {
     override fun onCreate() {
         super.onCreate()
+        handler= Handler()
         Fresco.initialize(this)
+    }
+    companion object {
+        lateinit var handler: Handler
     }
 }
