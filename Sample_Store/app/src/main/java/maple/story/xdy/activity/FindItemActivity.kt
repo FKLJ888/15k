@@ -16,6 +16,7 @@ class FindItemActivity : BaseActivity<FindItemPresenter>() ,FindItemContract.Fin
         val itemList = findItemBean.itemList
         findItemAdapter = FindItemAdapter(this,itemList)
         find_rv.adapter = findItemAdapter
+
     }
 
     override fun initContextView(): Int {
