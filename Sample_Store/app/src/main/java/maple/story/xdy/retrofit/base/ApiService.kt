@@ -27,8 +27,7 @@ interface ApiService {
 
     //获取热门排行信息
     @GET("v3/ranklist")
-    fun getHotData(@Query("num") num :Int,@Query("strategy") strategy :String,
-                   @Query("udid") udid :String,@Query("vc") vc :Int) : Observable<HotBean>
+    fun getHotData() : Observable<HotBean>
 
     //获取发现频道详情信息
     @GET("v3/videos")
