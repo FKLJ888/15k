@@ -55,6 +55,10 @@ dependencies {
     compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.0.4'
     testCompile 'junit:junit:4.12'
     compile 'com.gyf.barlibrary:barlibrary:2.2.9'
+    compile 'fm.jiecao:jiecaovideoplayer:2.0'
+    compile 'com.squareup.picasso:picasso:2.5.1'
+    compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.0.4'
+    testCompile 'junit:junit:4.12'
 }
 repositories {
     mavenCentral()
