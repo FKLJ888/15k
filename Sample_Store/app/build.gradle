@@ -52,11 +52,20 @@ dependencies {
     compile 'ch.ielse:switchbutton:1.0.0'
     compile 'org.zackratos:ultimatebar:1.0.3'
     compile 'com.android.support:recyclerview-v7:25.0.2'
+<<<<<<< HEAD
     compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.0.4'
     testCompile 'junit:junit:4.12'
     compile 'com.gyf.barlibrary:barlibrary:2.2.9'
     compile 'fm.jiecao:jiecaovideoplayer:2.0'
     compile 'com.squareup.picasso:picasso:2.5.1'
+=======
+
+    compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.0.4'
+    testCompile 'junit:junit:4.12'
+
+    compile 'com.gyf.barlibrary:barlibrary:2.2.9'
+
+>>>>>>> fa868b7df5a0f027837844f090c360ad44f2bb0b
 }
 repositories {
     mavenCentral()
