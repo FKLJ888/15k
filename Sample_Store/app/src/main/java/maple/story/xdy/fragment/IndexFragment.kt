@@ -20,11 +20,48 @@ import maple.story.xdy.mvp.presenter.IndexPresenter
  * Created by XP on 2017/11/27.
  */
 class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView, PullLoadMoreRecyclerView.PullLoadMoreListener{
+    lateinit var date:String
     var mAdapter: HomeAdapter? = null
 
     lateinit var list : ArrayList<HomeBean.IssueListBean.ItemListBean.DataBean>
+
+    override fun dataSucc2(bean: HomeBean) {
+        var nextPageUrl:String? = bean.nextPageUrl
+        var urlArray:List<String>
+        urlArray=nextPageUrl!!.split("?")
+        date=urlArray.get(1).split("=").get(1).split("&").get(0)
+        Log.i("xxx","日期:"+date)
+
+        var issList=bean.issueList
+
+        for(i in 0..issList!!.size-1)
+        {
+            var itemlist=issList.get(i).itemList
+            for (j in 0..itemlist!!.size-1)
+            {
+                if (j==0){
+                    continue
+                }
+                val pl = itemlist.get(j).data!!.playUrl
+                if(pl!=null){
+                    list.add(itemlist.get(j).data!!)
+                }
+            }
+        }
+        //停止刷新
+        recyclerView.setPullLoadMoreCompleted()
+        mAdapter!!.notifyDataSetChanged()
+    }
+
     //V层的接口
     override fun dataSucc(bean: HomeBean) {
+
+        var nextPageUrl:String? = bean.nextPageUrl
+        var urlArray:List<String>
+        urlArray=nextPageUrl!!.split("?")
+        date=urlArray.get(1).split("=").get(1).split("&").get(0)
+        Log.i("xxx","日期:"+date)
+
         list= ArrayList()
         var issList=bean.issueList
 
@@ -42,6 +79,8 @@ class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView, Pul
                 }
             }
         }
+        //停止刷新
+        recyclerView.setPullLoadMoreCompleted()
         mAdapter= HomeAdapter(context,list)
         recyclerView.setAdapter(mAdapter)
         mAdapter!!.setOnItemClickListener(object : HomeAdapter.OnItemClickListener{
@@ -57,7 +96,6 @@ class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView, Pul
                 intent.putExtra("collectionCount", list.get(position).consumption!!.collectionCount.toString())//收藏
                 intent.putExtra("replyCount", list.get(position).consumption!!.replyCount.toString())//分享
                 intent.putExtra("shareCount", list.get(position).consumption!!.shareCount.toString())//评论
-
                 startActivity(intent)
             }
         })
@@ -100,13 +138,14 @@ class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView, Pul
 
     //加载的方法
     override fun onLoadMore() {
-        stop()
-        Toast.makeText(context,"加载成功",1).show()
+        //加载数据
+        presenter.requestData2(date)
     }
 
     //刷新的方法
     override fun onRefresh() {
-        stop()
+        var list : ArrayList<HomeBean.IssueListBean.ItemListBean.DataBean>
+        presenter.requestData()
         Toast.makeText(context,"刷新成功",1).show()
     }
 }

@@ -21,6 +21,13 @@ import maple.story.xdy.retrofit.observer.BaseObserver
  * 请求参数,Observer(观察者)
  */
 class IndexModle : BaseModle(),IndexContract.IndexModle{
+    override fun getData2(date:String,observer: BaseObserver<IndexPresenter, HomeBean>) {
+        apiService!!.getHomeMoreData(date,"2")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer)
+    }
+
     override fun getData(observer: BaseObserver<IndexPresenter, HomeBean>) {
 
         Log.i("xxx","IndexM层获取数据")

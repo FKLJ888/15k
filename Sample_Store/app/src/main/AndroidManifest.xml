@@ -21,16 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
         <activity android:name=".activity.VideoActivity"></activity>
         <activity android:name=".activity.FindItemActivity" />
-=======
-
         <activity android:name=".activity.VideoActivity"></activity>
 
         <activity android:name=".activity.FindItemActivity" />
-
->>>>>>> c0ffb3f3af779a2934d953ae10ae6aaba63268d5
     </application>
 
 </manifest>
