@@ -36,10 +36,12 @@ class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView, Pul
                 if (j==0){
                     continue
                 }
-                list.add(itemlist.get(j).data!!)
+                val pl = itemlist.get(j).data!!.playUrl
+                if(pl!=null){
+                    list.add(itemlist.get(j).data!!)
+                }
             }
         }
-        list.removeAt(0)
         mAdapter= HomeAdapter(context,list)
         recyclerView.setAdapter(mAdapter)
         mAdapter!!.setOnItemClickListener(object : HomeAdapter.OnItemClickListener{
