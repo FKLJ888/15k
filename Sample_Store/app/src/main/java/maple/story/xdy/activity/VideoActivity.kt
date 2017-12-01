@@ -1,6 +1,8 @@
 package maple.story.xdy.activity
 import android.view.View
+import android.widget.ImageView
 import com.squareup.picasso.Picasso
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
 import kotlinx.android.synthetic.main.activity_video.*
 
 import maple.story.xdy.R
@@ -50,4 +52,8 @@ class VideoActivity : BaseActivity<VideoPresenter>(),VideoContract.VideoView {
     override fun showProgress(progress: Int) {
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        Runtime.getRuntime().gc()
+    }
 }

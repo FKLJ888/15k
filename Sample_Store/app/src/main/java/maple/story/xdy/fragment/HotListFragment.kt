@@ -3,7 +3,9 @@ package maple.story.xdy.fragment
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.tt.lvruheng.eyepetizer.mvp.model.bean.HotBean
 import maple.story.xdy.R
 import maple.story.xdy.adapter.HotRecyclerViewAdapter
@@ -32,6 +34,14 @@ class HotListFragment : BaseFragment<HotPresenter>(), HotContract.HotView{
         }
         hotRecyclerviewada = HotRecyclerViewAdapter(context, list!!)
         recycler.adapter = hotRecyclerviewada
+
+        hotRecyclerviewada!!.setOnItemClickListener(object : HotRecyclerViewAdapter.OnItemClickListener{
+            override fun onItemClick(view: View, position: Int) {
+                Log.i("hhh","点击了第"+position)
+                Toast.makeText(context,"点击的是第"+position,Toast.LENGTH_SHORT).show()
+            }
+        })
+
         var stagger = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
         recycler.layoutManager = stagger
     }
