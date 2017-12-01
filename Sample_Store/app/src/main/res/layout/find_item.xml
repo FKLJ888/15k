@@ -11,7 +11,7 @@
        android:id="@+id/find_topbar"
        android:layout_alignParentTop="true"
        app:rightImageSrc="@color/burlywood"
-       app:titleSize="12sp"
+       app:titleSize="@dimen/topSize"
        app:leftImageSrc="@drawable/return_pic"
        app:titleColor="@color/burlywood"
        app:title="Monday"

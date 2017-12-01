@@ -38,3 +38,4 @@ class HotRecyclerViewAdapter (context : Context, list: ArrayList<HotBean.ItemLis
         var tv:TextView?=itemView!!.findViewById(R.id.hotlist_tv)
     }
 }
+//很冒险的梦  输了你赢了世界又如何
