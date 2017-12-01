@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="topSize">10sp</dimen>
+    <dimen name="topSize">7sp</dimen>
 </resources>

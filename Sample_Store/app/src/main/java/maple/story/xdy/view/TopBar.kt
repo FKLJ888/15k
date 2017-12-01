@@ -24,7 +24,6 @@ class TopBar(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : Relati
     private var titleParams: RelativeLayout.LayoutParams
     private var leftParams: RelativeLayout.LayoutParams
 
-
     private var title: String       //标题
     private var titleColor: Int     //标题颜色
     private var titleSize: Float   //标题大小
