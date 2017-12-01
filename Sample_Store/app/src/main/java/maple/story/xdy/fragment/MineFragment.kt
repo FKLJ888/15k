@@ -17,7 +17,7 @@ class MineFragment :BaseFragment<MinePresenter>() {
     }
 
     override fun initContentView(): Int {
-        return R.layout.fragment_index
+        return R.layout.fragment_mime
     }
 
     override fun initView(view: View) {

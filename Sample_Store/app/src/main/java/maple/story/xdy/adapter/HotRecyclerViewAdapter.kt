@@ -65,3 +65,4 @@ class HotRecyclerViewAdapter (context : Context, list: ArrayList<HotBean.ItemLis
         this.mOnItemClickListener = listener
     }
 }
+//很冒险的梦  输了你赢了世界又如何

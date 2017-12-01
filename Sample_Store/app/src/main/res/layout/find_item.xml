@@ -5,15 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="maple.story.xdy.activity.FindItemActivity">
-   <TextView
-       android:gravity="center"
-       android:textSize="18sp"
-       android:textColor="#333"
-       android:id="@+id/find_tv"
+   <maple.story.xdy.view.TopBar
        android:layout_width="match_parent"
-       android:layout_height="50dp" />
+       android:layout_height="@dimen/y100"
+       android:id="@+id/find_topbar"
+       android:layout_alignParentTop="true"
+       app:rightImageSrc="@color/burlywood"
+       app:titleSize="@dimen/topSize"
+       app:leftImageSrc="@drawable/return_pic"
+       app:titleColor="@color/burlywood"
+       app:title="Monday"
+       app:TopBarWidth="@dimen/x800"/>
     <android.support.v4.widget.SwipeRefreshLayout
-        android:layout_below="@id/find_tv"
+        android:layout_below="@id/find_topbar"
         android:id="@+id/sw"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -21,7 +25,6 @@
             android:id="@+id/find_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
         </android.support.v7.widget.RecyclerView>
     </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>

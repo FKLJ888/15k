@@ -16,9 +16,10 @@ class VideoPresenter : BasePresenter<VideoActivity, VideoModle>(),VideoContract.
         var runnable= MyRunnable(url,title)
         runnable.setListener(object : MyRunnable.ThreadListener{
             override fun start() {
+                Toast.makeText(view,"开始缓存",Toast.LENGTH_SHORT).show()
             }
             override fun finish() {
-                Toast.makeText(view,"下载完成",Toast.LENGTH_SHORT).show()
+                Toast.makeText(view,"缓存完成",Toast.LENGTH_SHORT).show()
             }
         })
         modle.request(runnable)
