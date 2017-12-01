@@ -15,9 +15,10 @@ import maple.story.xdy.adapter.HomeAdapter
 import maple.story.xdy.mvp.base.BaseFragment
 import maple.story.xdy.mvp.contract.IndexContract
 import maple.story.xdy.mvp.presenter.IndexPresenter
-
 /**
- * Created by XP on 2017/11/27.
+ * desc:
+ * name: 段淇皓
+ * time： 2017/11/27.
  */
 class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView, PullLoadMoreRecyclerView.PullLoadMoreListener{
     lateinit var date:String

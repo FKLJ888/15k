@@ -1,6 +1,7 @@
 package maple.story.xdy.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import com.tt.lvruheng.eyepetizer.mvp.model.bean.HotBean
 import maple.story.xdy.R
+import maple.story.xdy.activity.VideoActivity
 import maple.story.xdy.adapter.HotRecyclerViewAdapter
 import maple.story.xdy.mvp.base.BaseFragment
 import maple.story.xdy.mvp.contract.HotContract
@@ -37,11 +39,20 @@ class HotListFragment : BaseFragment<HotPresenter>(), HotContract.HotView{
 
         hotRecyclerviewada!!.setOnItemClickListener(object : HotRecyclerViewAdapter.OnItemClickListener{
             override fun onItemClick(view: View, position: Int) {
-                Log.i("hhh","点击了第"+position)
-                Toast.makeText(context,"点击的是第"+position,Toast.LENGTH_SHORT).show()
+                var intent= Intent()
+                intent.setClass(context, VideoActivity::class.java)
+                intent.putExtra("playUrl", list.get(position).playUrl)//视频播放
+                intent.putExtra("blurred", list.get(position).cover!!.blurred)//模糊图
+                intent.putExtra("detail", list.get(position).cover!!.detail)//视频图
+                intent.putExtra("description", list.get(position).description)//视频描述
+                intent.putExtra("title", list.get(position).title)//视频标题
+                intent.putExtra("duration", list.get(position).duration.toString())//视频时长
+                intent.putExtra("collectionCount", list.get(position).consumption!!.collectionCount.toString())//收藏
+                intent.putExtra("replyCount", list.get(position).consumption!!.replyCount.toString())//分享
+                intent.putExtra("shareCount", list.get(position).consumption!!.shareCount.toString())//评论
+                startActivity(intent)
             }
         })
-
         var stagger = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
         recycler.layoutManager = stagger
     }
