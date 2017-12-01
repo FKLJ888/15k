@@ -29,11 +29,15 @@ class VideoActivity : BaseActivity<VideoPresenter>(),VideoContract.VideoView {
         var replyCount = intent.getStringExtra("replyCount")//分享
         var shareCount = intent.getStringExtra("shareCount")//评论
 
+        var i=Integer.parseInt(duration)
+
+        var time:String=""+i/60+" ' "+i%60+" ''"
+
         JCVideo.setUp(playUrl,"")
         Picasso.with(this).load(detail).into(JCVideo.ivThumb)
         Picasso.with(this).load(blurred).into(iv_bottom_bg)
         tv_video_title.setText(title)
-        tv_video_time.setText(duration)
+        tv_video_time.setText(time)
         tv_video_desc.setText(description)
         tv_video_favor.setText(collectionCount)
         tv_video_share.setText(replyCount)
