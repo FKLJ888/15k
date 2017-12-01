@@ -3,6 +3,7 @@ package maple.story.xdy.utils
 import android.os.Environment
 import android.system.Os.mkdir
 import java.io.File
+import java.util.regex.Pattern
 
 
 /**
@@ -16,9 +17,17 @@ class CreateFileUtil {
             if (!file.isDirectory()) {
                 file.mkdir()
             }
-            val file1 = File(file, title+".mp4")
+            val file1 = File(file, filterTitle(title)+".mp4")
             file1.createNewFile()
             return file1
+        }
+
+        private fun filterTitle(title:String):String
+        {
+            val regEx = "[`~!@#$%^&*()+=『』「」〈〉﹞﹝|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]"
+            val p = Pattern.compile(regEx)
+            val m = p.matcher(title)
+            return m.replaceAll("").trim()
         }
     }
 
