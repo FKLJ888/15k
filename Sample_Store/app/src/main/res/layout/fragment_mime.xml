@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/eyes"
+        android:layout_width="@dimen/x111"
+        android:layout_height="@dimen/y100"
+        android:layout_marginTop="@dimen/y63"
+        android:src="@mipmap/eyes"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="点击登录即可发表评论"
+        android:textColor="#666666"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/eyes" />
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/username">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y50"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_marginRight="@dimen/x15"
+                android:layout_width="@dimen/x40"
+                android:layout_height="@dimen/y40"
+                android:src="@mipmap/heart" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/y50"
+                android:gravity="center"
+                android:text="收藏" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="@dimen/y38"
+            android:background="#777777" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y50"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_marginRight="@dimen/x15"
+                android:layout_width="@dimen/x40"
+                android:layout_height="@dimen/y40"
+                android:src="@mipmap/pinglun" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/y50"
+                android:gravity="center"
+                android:text="评论" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#777777"
+        app:layout_constraintTop_toBottomOf="@id/ll" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/huancun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y63"
+        android:text="我的缓存"
+        android:textColor="#666666"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/jilu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="观看记录"
+        android:textColor="#666666"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/huancun" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/fankui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="意见反馈"
+        android:textColor="#666666"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/jilu" />
+</android.support.constraint.ConstraintLayout>
