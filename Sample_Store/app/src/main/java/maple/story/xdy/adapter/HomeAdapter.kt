@@ -27,12 +27,10 @@ class HomeAdapter(context: Context, list: MutableList<HomeBean.IssueListBean.Ite
         holder.iv_photo!!.setImageURI(list!!.get(position).cover?.feed)
         holder.iv_user!!.setImageURI("http://img.kaiyanapp.com/27c223e61df5b647d061e41ee995e8f6.jpeg?imageMogr2/quality/60/format/jpg")
         holder.itemView.setTag(position)
-//        HomeAdapter::mOnItemClickListener.set(this,mOnItemClickListener)
     }
 
     //加载布局
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): HomeViewHolder? {
-//        HomeViewHolder(inflater?.inflate(R.layout.item_home,parent,false), context!!)
         var view = LayoutInflater.from(parent!!.getContext()).inflate(R.layout.item_home, null)
         val holder = HomeViewHolder(view)
         return holder

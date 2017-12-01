@@ -3,17 +3,14 @@ package maple.story.xdy.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Handler
-import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import com.tt.lvruheng.eyepetizer.mvp.model.bean.HomeBean
 import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
 import kotlinx.android.synthetic.main.fragment_index.*
 import maple.story.xdy.R
-import maple.story.xdy.activity.HomeActivity
-import maple.story.xdy.activity.JieCaoActivity
+import maple.story.xdy.activity.VideoActivity
 import maple.story.xdy.adapter.HomeAdapter
 import maple.story.xdy.mvp.base.BaseFragment
 import maple.story.xdy.mvp.contract.IndexContract
@@ -23,11 +20,48 @@ import maple.story.xdy.mvp.presenter.IndexPresenter
  * Created by XP on 2017/11/27.
  */
 class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView, PullLoadMoreRecyclerView.PullLoadMoreListener{
+    lateinit var date:String
     var mAdapter: HomeAdapter? = null
 
     lateinit var list : ArrayList<HomeBean.IssueListBean.ItemListBean.DataBean>
+
+    override fun dataSucc2(bean: HomeBean) {
+        var nextPageUrl:String? = bean.nextPageUrl
+        var urlArray:List<String>
+        urlArray=nextPageUrl!!.split("?")
+        date=urlArray.get(1).split("=").get(1).split("&").get(0)
+        Log.i("xxx","日期:"+date)
+
+        var issList=bean.issueList
+
+        for(i in 0..issList!!.size-1)
+        {
+            var itemlist=issList.get(i).itemList
+            for (j in 0..itemlist!!.size-1)
+            {
+                if (j==0){
+                    continue
+                }
+                val pl = itemlist.get(j).data!!.playUrl
+                if(pl!=null){
+                    list.add(itemlist.get(j).data!!)
+                }
+            }
+        }
+        //停止刷新
+        recyclerView.setPullLoadMoreCompleted()
+        mAdapter!!.notifyDataSetChanged()
+    }
+
     //V层的接口
     override fun dataSucc(bean: HomeBean) {
+
+        var nextPageUrl:String? = bean.nextPageUrl
+        var urlArray:List<String>
+        urlArray=nextPageUrl!!.split("?")
+        date=urlArray.get(1).split("=").get(1).split("&").get(0)
+        Log.i("xxx","日期:"+date)
+
         list= ArrayList()
         var issList=bean.issueList
 
@@ -39,18 +73,29 @@ class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView, Pul
                 if (j==0){
                     continue
                 }
-                list.add(itemlist.get(j).data!!)
+                val pl = itemlist.get(j).data!!.playUrl
+                if(pl!=null){
+                    list.add(itemlist.get(j).data!!)
+                }
             }
         }
-        list.removeAt(0)
+        //停止刷新
+        recyclerView.setPullLoadMoreCompleted()
         mAdapter= HomeAdapter(context,list)
         recyclerView.setAdapter(mAdapter)
         mAdapter!!.setOnItemClickListener(object : HomeAdapter.OnItemClickListener{
             override fun onItemClick(view: View, position: Int) {
-                Toast.makeText(context,"点击的是"+position+"个Item项",Toast.LENGTH_SHORT).show()
                 var intent=Intent()
-                intent.setClass(context,JieCaoActivity::class.java)
-//                intent.putExtra("url",list.get(position))
+                intent.setClass(context, VideoActivity::class.java)
+                intent.putExtra("playUrl", list.get(position).playUrl)//视频播放
+                intent.putExtra("blurred", list.get(position).cover!!.blurred)//模糊图
+                intent.putExtra("detail", list.get(position).cover!!.detail)//视频图
+                intent.putExtra("description", list.get(position).description)//视频描述
+                intent.putExtra("title", list.get(position).title)//视频标题
+                intent.putExtra("duration", list.get(position).duration.toString())//视频时长
+                intent.putExtra("collectionCount", list.get(position).consumption!!.collectionCount.toString())//收藏
+                intent.putExtra("replyCount", list.get(position).consumption!!.replyCount.toString())//分享
+                intent.putExtra("shareCount", list.get(position).consumption!!.shareCount.toString())//评论
                 startActivity(intent)
             }
         })
@@ -93,13 +138,14 @@ class IndexFragment :BaseFragment<IndexPresenter>(),IndexContract.IndexView, Pul
 
     //加载的方法
     override fun onLoadMore() {
-        stop()
-        Toast.makeText(context,"加载成功",1).show()
+        //加载数据
+        presenter.requestData2(date)
     }
 
     //刷新的方法
     override fun onRefresh() {
-        stop()
+        var list : ArrayList<HomeBean.IssueListBean.ItemListBean.DataBean>
+        presenter.requestData()
         Toast.makeText(context,"刷新成功",1).show()
     }
 }

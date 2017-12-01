@@ -32,7 +32,6 @@ class HotFragment : BaseFragment<HotPresenter>(){
     }
 
     override fun initView(view: View) {
-
         val titles = ArrayList<String>()
         titles.clear()
         titles.add("周排行")
@@ -41,6 +40,7 @@ class HotFragment : BaseFragment<HotPresenter>(){
 
         tab = view.findViewById(R.id.tab)
         tab.tabMode = TabLayout.MODE_FIXED
+//        tab.setTabTextColors(R.color.burlywood,R.color.burlywood)
         viewpager = view.findViewById(R.id.viewpager)
 
         for (i in titles.indices) {

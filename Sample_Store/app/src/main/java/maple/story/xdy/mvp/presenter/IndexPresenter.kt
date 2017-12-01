@@ -14,6 +14,7 @@ import maple.story.xdy.retrofit.observer.BaseObserver
  * Created by XP on 2017/11/27.
  */
 class IndexPresenter : BasePresenter<IndexFragment, IndexModle>(),IndexContract.IndexPresenter{
+
     override fun requestData() {
         //验证V层传递过来的参数
         Log.i("xxx","IndexP层验证数据")
@@ -28,6 +29,18 @@ class IndexPresenter : BasePresenter<IndexFragment, IndexModle>(),IndexContract.
             }
             override fun onErrorable(e: Throwable) {
             }
+        })
+    }
+
+    override fun requestData2(date: String) {
+        //请求加载更多的数据
+        modle.getData2(date,object : BaseObserver<IndexPresenter,HomeBean>(this,view.activity!!){
+            override fun onSuccess(bean: HomeBean) {
+                view.dataSucc2(bean)
+            }
+            override fun onErrorable(e: Throwable) {
+            }
+
         })
     }
 }

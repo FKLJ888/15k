@@ -1,6 +1,7 @@
 package maple.story.xdy.fragment
 
 import android.content.Context
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.tt.lvruheng.eyepetizer.mvp.model.bean.HotBean
@@ -20,7 +21,6 @@ class HotListFragment : BaseFragment<HotPresenter>(), HotContract.HotView{
     lateinit var hotRecyclerviewada :HotRecyclerViewAdapter
     lateinit var recycler: RecyclerView
 
-
     override fun showData(hotbean: HotBean) {
         var list : ArrayList<HotBean.ItemListBean.DataBean>? = ArrayList()
         for (bean in hotbean.itemList!!)
@@ -30,10 +30,10 @@ class HotListFragment : BaseFragment<HotPresenter>(), HotContract.HotView{
                 list!!.add(bean.data!!)
             }
         }
-//        hotRecyclerviewada = HotRecyclerViewAdapter(context, list!!)
-//        recycler.adapter = hotRecyclerviewada
-//        var stagger = StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL)
-//        recycler.layoutManager = stagger
+        hotRecyclerviewada = HotRecyclerViewAdapter(context, list!!)
+        recycler.adapter = hotRecyclerviewada
+        var stagger = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
+        recycler.layoutManager = stagger
     }
 
     override fun initEvent(context: Context) {
