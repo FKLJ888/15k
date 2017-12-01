@@ -18,10 +18,14 @@ import maple.story.xdy.R
 class HotRecyclerViewAdapter (context : Context, list: ArrayList<HotBean.ItemListBean.DataBean>) : RecyclerView.Adapter<HotRecyclerViewAdapter.ViewHolder>() {
     var context : Context? = context
     var list : ArrayList<HotBean.ItemListBean.DataBean>? = list
-    var inflater : LayoutInflater? = LayoutInflater.from(context)
+    var mOnItemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): HotRecyclerViewAdapter.ViewHolder {
-        return ViewHolder(inflater?.inflate(R.layout.item_hot,parent,false))
+
+        var view = LayoutInflater.from(parent!!.getContext()).inflate(R.layout.item_hot, null)
+        var holder = ViewHolder(view)
+
+        return holder
     }
 
     override fun getItemCount(): Int {
@@ -31,11 +35,33 @@ class HotRecyclerViewAdapter (context : Context, list: ArrayList<HotBean.ItemLis
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         holder!!.image!!.setImageURI(list!!.get(position).cover!!.detail)
         holder!!.tv!!.setText(list!!.get(position).title)
+        holder.itemView.setTag(position)
     }
 
-    class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        var image : SimpleDraweeView?= itemView?.findViewById(R.id.hotlist_img)
-        var tv:TextView?=itemView!!.findViewById(R.id.hotlist_tv)
+    inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView),View.OnClickListener {
+        override fun onClick(v: View?) {
+            if(mOnItemClickListener!=null){
+                val tag = itemView.getTag() as Int
+                mOnItemClickListener!!.onItemClick(itemView, tag)
+            }
+        }
+
+        var image: SimpleDraweeView? =null
+        var tv : TextView?=null
+        init {
+            image = itemView!!.findViewById(R.id.hotlist_img)
+            tv = itemView.findViewById(R.id.hotlist_tv)
+            itemView?.setOnClickListener(this)
+        }
+    }
+
+    //定义接口
+    interface OnItemClickListener{
+        fun onItemClick(view:View,position: Int)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.mOnItemClickListener = listener
     }
 }
 //很冒险的梦  输了你赢了世界又如何
