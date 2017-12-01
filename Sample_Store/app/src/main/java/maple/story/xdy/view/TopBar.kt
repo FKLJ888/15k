@@ -19,15 +19,19 @@ import maple.story.xdy.R
 class TopBar(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : RelativeLayout(context, attrs, defStyleAttr) {
     private var right_iv: ImageView
     private var title_tv: TextView
+    private var left_iv: ImageView
 
     private var rightParams: RelativeLayout.LayoutParams
     private var titleParams: RelativeLayout.LayoutParams
+    private var leftParams: RelativeLayout.LayoutParams
+
 
     private var title: String       //标题
     private var titleColor: Int     //标题颜色
     private var titleSize: Float   //标题大小
-    private var rightImageSrc: Drawable  //左侧图片
+    private var rightImageSrc: Drawable  //右侧图片
     private var topBarWidth: Float   //标题大小
+    private var leftImageSrc: Drawable   //左侧图片
 
     private var clickListener: TopBarClickListener? = null
 
@@ -44,7 +48,7 @@ class TopBar(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : Relati
         titleSize = ta.getDimension(R.styleable.TopBar_titleSize, 14f)
         rightImageSrc = ta.getDrawable(R.styleable.TopBar_rightImageSrc)
         topBarWidth=ta.getDimension(R.styleable.TopBar_TopBarWidth,100f)
-
+        leftImageSrc=ta.getDrawable(R.styleable.TopBar_leftImageSrc)
         //调用recycle()  避免重复创建时有误
         ta.recycle()
 
@@ -52,6 +56,7 @@ class TopBar(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : Relati
         //初始化控件
         right_iv = ImageView(context)
         title_tv = TextView(context)
+        left_iv = ImageView(context)
 
         //给控件赋值
         title_tv.text = title
@@ -62,13 +67,25 @@ class TopBar(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : Relati
         if (rightImageSrc != null) {
             right_iv.setImageDrawable(rightImageSrc)
         }
+        if (leftImageSrc != null) {
+            left_iv.setImageDrawable(leftImageSrc)
+        }
+
+        leftParams = RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT)
+        leftParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE)
+        leftParams.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE)
+        val toLeft : Int = (topBarWidth/15).toInt()
+        leftParams.setMargins(toLeft, 0, 0, 0)
+        addView(left_iv, leftParams)
 
         rightParams = RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT)
         rightParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE)
         rightParams.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE)
-        val toRight : Int = (topBarWidth/13).toInt()
+        val toRight : Int = (topBarWidth/15).toInt()
         rightParams.setMargins(0, 0, toRight, 0)
         addView(right_iv, rightParams)
 
@@ -80,15 +97,16 @@ class TopBar(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : Relati
 
     }
 
-    override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
-    }
-
     fun setOnTopBarClickListener(listener: TopBarClickListener) {
         this.clickListener = listener
         right_iv.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
                 clickListener!!.rightClick(view as ImageView)
+            }
+        })
+        left_iv.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v: View?) {
+                clickListener!!.leftClick(v as ImageView)
             }
         })
     }
@@ -99,12 +117,13 @@ class TopBar(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : Relati
     {
         right_iv.setImageResource(resId)
     }
-    fun getTitle():String{
-        return title
+    fun setLeftImage(resId : Int)
+    {
+        left_iv.setImageResource(resId)
     }
-
 
     interface TopBarClickListener {
         fun rightClick(imageView: ImageView)
+        fun leftClick(imageView: ImageView)
     }
 }

@@ -63,8 +63,6 @@ class FindItemAdapter(var context: Context, var list: List<Item>) : RecyclerView
                 intent.putExtra("replyCount", list.get(list.size - 1).data.consumption!!.replyCount.toString())//分享
                 intent.putExtra("shareCount", list.get(list.size - 1).data.consumption!!.shareCount.toString())//评论
             }
-
-
             context.startActivity(intent.setClass(context, VideoActivity::class.java))
         }
     }

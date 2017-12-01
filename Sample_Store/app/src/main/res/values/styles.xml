@@ -16,5 +16,6 @@
         <attr name="titleColor" format="color"></attr>
         <attr name="rightImageSrc" format="reference|color"></attr>
         <attr name="TopBarWidth" format="dimension"></attr>
+        <attr name="leftImageSrc" format="reference|color"></attr>
     </declare-styleable>
 </resources>

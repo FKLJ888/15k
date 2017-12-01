@@ -11,6 +11,7 @@
         android:layout_alignParentTop="true"
         xp:rightImageSrc="@drawable/icon_search"
         xp:titleSize="12sp"
+        xp:leftImageSrc="@color/burlywood"
         xp:titleColor="@color/burlywood"
         xp:title="Monday"
         xp:TopBarWidth="@dimen/x800"
