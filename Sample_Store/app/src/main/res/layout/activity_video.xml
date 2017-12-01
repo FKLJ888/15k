@@ -3,12 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="6">
+    android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_weight="1">
         <fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
             android:id="@+id/JCVideo"
             android:layout_width="match_parent"
@@ -18,14 +17,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_weight="1">
 
         <ImageView
             android:id="@+id/iv_bottom_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="center"/>
-
+            android:scaleType="fitXY" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -38,6 +36,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/tv_video_title"
                     android:layout_width="wrap_content"
@@ -48,23 +47,23 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:textSize="12sp"
                     android:id="@+id/tv_video_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="时间"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tv_video_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:textSize="13sp"
                     android:text="视频描述"
                     android:textColor="@color/white"
-                    android:textStyle="bold"/>
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -84,8 +83,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:textColor="@color/white"
-                    android:text="收藏" />
+                    android:text="收藏"
+                    android:textColor="@color/white" />
 
                 <ImageView
                     android:id="@+id/iv_video_share"
@@ -99,8 +98,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:textColor="@color/white"
-                    android:text="分享" />
+                    android:text="分享"
+                    android:textColor="@color/white" />
 
                 <ImageView
                     android:id="@+id/iv_video_reply"
@@ -114,8 +113,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:textColor="@color/white"
-                    android:text="评论" />
+                    android:text="评论"
+                    android:textColor="@color/white" />
 
                 <ImageView
                     android:id="@+id/iv_video_download"
@@ -129,8 +128,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:textColor="@color/white"
-                    android:text="缓存" />
+                    android:text="缓存"
+                    android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
